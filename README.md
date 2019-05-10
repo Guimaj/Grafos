@@ -1,2 +1,2 @@
 # Grafos
-Projeto da disciplina Teoria dos Grafos - FEI
+Programa feito em C para a análise de grafos.
