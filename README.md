@@ -1,6 +1,8 @@
 # Grafos
 Programa feito em C para a análise de grafos.
 
+Para analizar outros grafos, basta alterar a matriz de adjacência presente no arquivo *A.txt* para a matriz de adjacência do grafo desejado.
+
 # Windows
 Para compilar manualmente e executar o programa, basta abrir o cmd e digitar os seguintes comandos:
 
