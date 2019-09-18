@@ -9,7 +9,8 @@
 */
 
 int **leituraMatriz(int linhas){
-    int i,**matriz;
+    int i;
+    int** matriz;
     matriz = malloc(sizeof(int *)*linhas);
     for(i=0;i<linhas;i++){
         matriz[i] = malloc(sizeof(int)*linhas);
@@ -67,7 +68,8 @@ void passeio(int **m_cubo, int numVertices){
 
 
 void bubbleSort(int *vetor_graus, int numVertices){
-    int aux,i,j = 0;
+    int i,j,aux = 0;
+
     for(i=0;i<numVertices;i++){
         for(j=0;j<numVertices-1;j++){
             if(vetor_graus[j] < vetor_graus[j+1]){
@@ -78,8 +80,6 @@ void bubbleSort(int *vetor_graus, int numVertices){
         }
     }
 }
-
-
 
 void graus(int **matriz, int numVertices){
     int i,j,soma;
@@ -93,7 +93,7 @@ void graus(int **matriz, int numVertices){
     }
 
     bubbleSort(vetor_graus, numVertices);
-
+    
     printf("Graus do grafo em ordem não crescente: ");
     for(i=0;i<numVertices;i++){
         printf("%d  ",vetor_graus[i]);
@@ -107,7 +107,7 @@ int contaArestas(int **matriz, int numVertices){
 
     for(i=0;i<numVertices;i++){
        for(j=i;j<numVertices;j++){
-            arestas += matriz[i][j];
+            arestas+=matriz[i][j];
        }
     }
     printf("Arestas do grafo: %d\n",arestas);
@@ -186,9 +186,9 @@ void tipoGrafo(int **matriz, int numVertices, int arestas, int conexo){
 
     if(conexo == 0){
         printf("O grafo é conexo!\n");
-        if(laco == 0 && arestamult ==0){
+        if(laco == 0 && arestamult == 0){
         	if(arestas == numVertices - 1){
-            	printf("O grafo é uma árvore!\n");
+            	printf("O grafo é uma Árvore!\n");
         	}	
 		}
     }
@@ -209,20 +209,23 @@ FILE* abreArquivo(){
 
 int main(int argc, char *argv[]) {
     setlocale(LC_ALL,"Portuguese");
-    int i,j,numVertices,arestas,cont,num = 0;
+    int i,j,numVertices,arestas,num,cont = 0;
     int conexo;
     int **matriz;
     int **matriz_quad;
     int **matriz_cubo;
-    FILE* arq = abreArquivo();
+    FILE *arq;
+
+    arq = abreArquivo();
 
     while((fscanf(arq,"%d",&num))!= EOF){
         cont++;
     }
-    rewind(arq);
-    numVertices = sqrt(cont); 
-    matriz = leituraMatriz(numVertices);
     
+    rewind(arq);
+    numVertices = sqrt(cont);
+    matriz = leituraMatriz(numVertices);
+
     printf("========= Algoritmo de Grafos ============\n\n");
     printf(" Análise do Grafo:\n\n");
 
